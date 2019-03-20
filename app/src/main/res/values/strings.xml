@@ -12,4 +12,5 @@
     <string name="clave">Clave</string>
     <string name="entrar">Entrar</string>
     <string name="registrar">Registrar</string>
+    <string name="confirmarRegistro">Confirmar</string>
 </resources>
