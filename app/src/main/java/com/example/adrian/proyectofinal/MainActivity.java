@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,13 +38,21 @@ public class MainActivity extends AppCompatActivity {
     public void entrar (View v)
     {
         Intent i = new Intent(this, NavigationActivity.class);
-        startActivity(i);
+        nombre = etNombre.getText().toString();
+        pass = etPass.getText().toString();
+
+        if(comprobarBD(nombre, pass)) {
+            startActivity(i);
+        }
     }
 
     public void bRegistrar (View view){
+        etNombre.setText("");
+        etPass.setText("");
         bEntrar.setVisibility(View.INVISIBLE);
         bRegistrar.setVisibility(View.INVISIBLE);
         bConfirmarRegistro.setVisibility(View.VISIBLE);
+
     }
 
     public void bConfirmar (View view){
@@ -52,16 +61,17 @@ public class MainActivity extends AppCompatActivity {
         bConfirmarRegistro.setVisibility(View.INVISIBLE);
         nombre = etNombre.getText().toString();
         pass = etPass.getText().toString();
-        if(pass!=null&& nombre!=null){
-
-            if(comprobarBD(nombre, pass)==false){
-                registrar(nombre, pass);
-                Toast.makeText(this,"Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
-            }
-
+        if(TextUtils.isEmpty(nombre) && TextUtils.isEmpty(pass)) {
+            etNombre.setError("Introduce un nombre");
+            etPass.setError("Introduce una contraseña");
+            Toast.makeText(this,"rellena los campos", Toast.LENGTH_SHORT).show();
 
         }else {
-            Toast.makeText(this,"rellena los campos", Toast.LENGTH_SHORT).show();
+            if(!comprobarBD(nombre, pass)) {
+                registrar(nombre, pass);
+            }else{
+                Toast.makeText(this,"Introduce un usuario diferente", Toast.LENGTH_SHORT).show();
+            }
         }
 
     }
@@ -75,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
             registro.put("nombre",nombre);
 
             db.insert("usuarios",null, registro);
+            Toast.makeText(this,"Usuario: "+nombre+" registrado correctamente", Toast.LENGTH_SHORT).show();
             db.close();
             etNombre.setText("");
             etPass.setText("");
@@ -85,14 +96,16 @@ public class MainActivity extends AppCompatActivity {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"administracion",null,1);
         SQLiteDatabase db = admin.getWritableDatabase();
 
-            Cursor elCursor = db.rawQuery("select nombre from usuarios where nombre = "+nombre, null);
+        String[] args = new String[] {nombre};
+
+            Cursor elCursor = db.rawQuery("select clave, nombre from usuarios where nombre =?", args);
             if(elCursor.moveToFirst()){
-                Toast.makeText(this,elCursor.getCount(), Toast.LENGTH_SHORT).show();
-                if(elCursor.getCount()!=0) {
-                    int numUsuariosEncontrados = elCursor.getCount();
-                    Toast.makeText(this,"El usuario ya existe. Usuarios:"+numUsuariosEncontrados, Toast.LENGTH_SHORT).show();
-                    return true;
-                }
+
+                do{
+                    String usuarioEncontrado= elCursor.getString(1);
+                    Toast.makeText(this,"Usuario: "+usuarioEncontrado+" ya existe", Toast.LENGTH_SHORT).show();
+                }while(elCursor.moveToNext());
+
                 db.close();
             }
             return false;
