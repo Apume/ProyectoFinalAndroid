@@ -35,14 +35,26 @@ public class MainActivity extends AppCompatActivity {
         bConfirmarRegistro.setVisibility(View.INVISIBLE);
 
     }
-    public void entrar (View v)
-    {
+    public void bEntrar (View view){
         Intent i = new Intent(this, NavigationActivity.class);
         nombre = etNombre.getText().toString();
         pass = etPass.getText().toString();
 
-        if(comprobarBD(nombre, pass)) {
-            startActivity(i);
+        if(!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(pass)) {
+            if (comprobarBD(nombre, pass)) {
+                startActivity(i);
+            } else {
+                Toast.makeText(this, "Usuario o contraseña erroneos", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            if(TextUtils.isEmpty(nombre)) {
+                etNombre.setError("Introduce un nombre");
+            }
+            if(TextUtils.isEmpty(pass)){
+                etPass.setError("Introduce una contraseña");
+            }
+
+            Toast.makeText(this, "Por favor, rellena los campos", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -96,6 +108,29 @@ public class MainActivity extends AppCompatActivity {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"administracion",null,1);
         SQLiteDatabase db = admin.getWritableDatabase();
 
+        Cursor fila = db.rawQuery("select nombre, clave from usuarios where nombre= '"+nombre+"' and clave= '"+pass+"'", null);
+
+        if(fila.moveToFirst()){
+            fila.close();
+            db.close();
+            return true;
+        }
+        fila.close();
+        db.close();
+        return false;
+
+
+
+
+
+
+
+
+
+
+
+
+        /*
         String[] args = new String[] {nombre};
 
             Cursor elCursor = db.rawQuery("select clave, nombre from usuarios where nombre =?", args);
@@ -109,6 +144,6 @@ public class MainActivity extends AppCompatActivity {
                 db.close();
             }
             return false;
-
+        */
     }
 }

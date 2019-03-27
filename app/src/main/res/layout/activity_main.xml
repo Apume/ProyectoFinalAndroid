@@ -12,11 +12,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginStart="84dp"
         android:layout_marginTop="49dp"
+        android:layout_marginEnd="85dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/nombre"
-        android:inputType="textPersonName"
-        android:autofillHints="" />
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/etPass"
@@ -36,25 +38,26 @@
     <Button
         android:id="@+id/bEntrar"
         android:layout_width="wrap_content"
-        android:layout_height="213dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="59dp"
-        android:layout_marginTop="307dp"
-        android:layout_marginBottom="211dp"
-        android:onClick="entrar"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="206dp"
+        android:layout_marginEnd="0dp"
+        android:onClick="bEntrar"
         android:text="@string/entrar" />
 
     <Button
         android:id="@+id/bRegistrar"
-        android:layout_width="88dp"
-        android:layout_height="219dp"
-        android:layout_alignTop="@+id/bEntrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bEntrar"
+        android:layout_alignStart="@+id/bEntrar"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="205dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="0dp"
         android:onClick="bRegistrar"
         android:text="@string/registrar" />
 
@@ -64,8 +67,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/etPass"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="231dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="27dp"
         android:onClick="bConfirmar"
         android:text="@string/confirmarRegistro" />
 
