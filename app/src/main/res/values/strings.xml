@@ -13,4 +13,7 @@
     <string name="entrar">Entrar</string>
     <string name="registrar">Registrar</string>
     <string name="confirmarRegistro">Confirmar</string>
+    <string name="borrar">Borrar</string>
+    <string name="modificar">Modificar</string>
+    <string name="volver">Volver</string>
 </resources>

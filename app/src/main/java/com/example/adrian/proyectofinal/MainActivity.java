@@ -34,18 +34,26 @@ public class MainActivity extends AppCompatActivity {
         bConfirmarRegistro=findViewById(R.id.bConfrirmarRegistro);
         bConfirmarRegistro.setVisibility(View.INVISIBLE);
 
+        if(!comprobarBD("root","root")){
+            registrar("root", "root");
+        }
+
     }
     public void bEntrar (View view){
         Intent i = new Intent(this, NavigationActivity.class);
+        Intent a = new Intent(this, PantallaAdmin.class);
         nombre = etNombre.getText().toString();
         pass = etPass.getText().toString();
-
         if(!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(pass)) {
-            if (comprobarBD(nombre, pass)) {
-                startActivity(i);
-            } else {
-                Toast.makeText(this, "Usuario o contraseña erroneos", Toast.LENGTH_SHORT).show();
-            }
+            //------------------------------------------------------
+               // if(comprobarAdmin(nombre, pass))
+                    //------------------------------------------------------
+                if (comprobarBD(nombre, pass)) {
+                    startActivity(i);
+                } else {
+                    Toast.makeText(this, "Usuario o contraseña erroneos", Toast.LENGTH_SHORT).show();
+                }
+
         }else{
             if(TextUtils.isEmpty(nombre)) {
                 etNombre.setError("Introduce un nombre");
@@ -117,4 +125,19 @@ public class MainActivity extends AppCompatActivity {
         db.close();
         return false;
     }
+
+    /*public boolean comprobarAdmin(String nombre, String pass){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"administracion",null,1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        Cursor fila = db.rawQuery("select nombre, clave from usuarios where nombre= 'root' and clave= 'root'", null);
+        if(fila.moveToFirst()){
+            fila.close();
+            db.close();
+            return true;
+        }
+        fila.close();
+        db.close();
+        return false;
+    }*/
+
 }
