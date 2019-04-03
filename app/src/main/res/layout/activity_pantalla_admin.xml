@@ -8,42 +8,48 @@
 
     <Button
         android:id="@+id/bBorrar"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
+        android:onClick="borrar"
         android:text="@string/borrar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etGestionUsers" />
 
     <Button
         android:id="@+id/bModificar"
-        android:layout_width="107dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="160dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="modificar"
         android:text="@string/modificar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bBorrar" />
 
     <Button
         android:id="@+id/bAgregar"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="28dp"
-        android:onClick="volver"
-        android:text="@string/volver"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="agregar"
+        android:text="@string/agregar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bModificar" />
 
     <ScrollView
         android:id="@+id/svListaNombres"
-        android:layout_width="395dp"
-        android:layout_height="352dp"
+        android:layout_width="0dp"
+        android:layout_height="144dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -61,11 +67,24 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="@st"
+        android:hint="@string/hintGestion"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/svListaNombres"
         tools:targetApi="o" />
+
+    <Button
+        android:id="@+id/bCerrarSesion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="cerrarSesion"
+        android:text="@string/cerrarSesion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bAgregar" />
 </android.support.constraint.ConstraintLayout>

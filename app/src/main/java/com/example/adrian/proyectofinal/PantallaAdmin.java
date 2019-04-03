@@ -12,14 +12,30 @@ public class PantallaAdmin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_admin);
     }
-    public void volver(View v)
+    public void cerrarSesion(View v)
     {
         Intent i = new Intent(this, MainActivity.class);
         finish();
         startActivity(i);
     }
+
+    public void borrar(View v)
+    {
+
+    }
+
     public void modificar(View v)
     {
 
+    }
+
+    public void agregar(View v)
+    {
+
+    }
+
+    @Override
+    public void onBackPressed(){
+        //dejar en blanco esto inutilizara el botón
     }
 }
