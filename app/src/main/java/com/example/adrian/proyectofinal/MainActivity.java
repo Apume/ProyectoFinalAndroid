@@ -49,7 +49,13 @@ public class MainActivity extends AppCompatActivity {
                // if(comprobarAdmin(nombre, pass))
                     //------------------------------------------------------
                 if (comprobarBD(nombre, pass)) {
-                    startActivity(i);
+                    if(nombre.equals("root")  && pass.equals("root")){
+                        startActivity(a);
+                    }
+                    else {
+                        startActivity(i);
+                    }
+
                 } else {
                     Toast.makeText(this, "Usuario o contraseña erroneos", Toast.LENGTH_SHORT).show();
                 }
@@ -126,18 +132,5 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
-    public boolean comprobarAdmin(String nombre, String pass){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"administracion",null,1);
-        SQLiteDatabase db = admin.getWritableDatabase();
-        Cursor fila = db.rawQuery("select nombre, clave from usuarios where nombre= 'root' and clave= 'root'", null);
-        if(fila.moveToFirst()){
-            fila.close();
-            db.close();
-            return true;
-        }
-        fila.close();
-        db.close();
-        return false;
-    }
 
 }
