@@ -6,19 +6,15 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_imagenes"
-            android:icon="@mipmap/youwincopia"
-            android:title="Imagenes" />
-        <item
-            android:id="@+id/nav_videos"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Videos" />
+            android:title="Galeria" />
         <item
             android:id="@+id/nav_notas"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/notasIco"
             android:title="Notas" />
         <item
             android:id="@+id/nav_sonidos"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/sonidosIco"
             android:title="Sonidos" />
     </group>
 
