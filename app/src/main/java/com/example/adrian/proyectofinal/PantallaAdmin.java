@@ -15,6 +15,11 @@ public class PantallaAdmin extends AppCompatActivity {
     public void volver(View v)
     {
         Intent i = new Intent(this, MainActivity.class);
+        finish();
         startActivity(i);
+    }
+    public void modificar(View v)
+    {
+
     }
 }
