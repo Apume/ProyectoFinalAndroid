@@ -18,7 +18,7 @@
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/nombre"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName" tools:targetApi="o"/>
 
     <EditText
         android:id="@+id/etPass"
@@ -33,7 +33,7 @@
         android:ems="10"
         android:hint="@string/clave"
         android:inputType="textPassword"
-        android:autofillHints="" />
+        android:autofillHints="" tools:targetApi="o"/>
 
     <Button
         android:id="@+id/bEntrar"

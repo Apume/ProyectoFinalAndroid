@@ -102,15 +102,7 @@ public class NavigationActivity extends AppCompatActivity
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // queremos un task nuevo
             startActivity(i);
 
-        } else if (id == R.id.nav_videos) {
-
-            Intent i = new Intent();
-            i.setAction(android.content.Intent.ACTION_VIEW);
-            i.setType("video/*");
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // queremos un task nuevo
-            startActivity(i);
-
-        } else if (id == R.id.nav_notas) {
+        }  else if (id == R.id.nav_notas) {
 
         } else if (id == R.id.nav_sonidos) {
 

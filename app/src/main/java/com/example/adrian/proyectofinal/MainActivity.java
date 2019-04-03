@@ -45,9 +45,7 @@ public class MainActivity extends AppCompatActivity {
         nombre = etNombre.getText().toString();
         pass = etPass.getText().toString();
         if(!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(pass)) {
-            //------------------------------------------------------
-               // if(comprobarAdmin(nombre, pass))
-                    //------------------------------------------------------
+
                 if (comprobarBD(nombre, pass)) {
                     if(nombre.equals("root")  && pass.equals("root")){
                         startActivity(a);
@@ -55,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
                     else {
                         startActivity(i);
                     }
-
                 } else {
                     Toast.makeText(this, "Usuario o contraseña erroneos", Toast.LENGTH_SHORT).show();
                 }
@@ -101,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public  void  registrar(String nombre, String pass) {
+    public void registrar(String nombre, String pass) {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"administracion",null,1);
         SQLiteDatabase db = admin.getWritableDatabase();
 

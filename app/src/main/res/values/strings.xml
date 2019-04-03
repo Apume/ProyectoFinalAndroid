@@ -16,4 +16,5 @@
     <string name="borrar">Borrar</string>
     <string name="modificar">Modificar</string>
     <string name="volver">Volver</string>
+    <string name="hintGestionUser">Inserta un usuario</string>
 </resources>
