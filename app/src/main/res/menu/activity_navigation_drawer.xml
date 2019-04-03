@@ -16,6 +16,11 @@
             android:id="@+id/nav_sonidos"
             android:icon="@drawable/sonidosico"
             android:title="Sonidos" />
+
+        <item
+            android:id="@+id/nav_camara"
+            android:icon="@drawable/cameraicon"
+            android:title="Camara" />
     </group>
 
 </menu>
