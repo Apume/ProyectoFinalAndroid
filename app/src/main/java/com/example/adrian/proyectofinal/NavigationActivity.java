@@ -1,7 +1,9 @@
 package com.example.adrian.proyectofinal;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Gallery;
 
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -23,6 +26,8 @@ public class NavigationActivity extends AppCompatActivity
         setContentView(R.layout.activity_navigation);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
     // Boton de enviar correo
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -84,15 +89,26 @@ public class NavigationActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_imagenes) {
-            int SELECT_FILE = 1;
+            /*int SELECT_FILE = 1;
             Intent intent = new Intent();
             intent.setType("image/*");
             intent.setAction(intent.ACTION_GET_CONTENT);
             startActivityForResult(
-                    intent.createChooser(intent, "Selecciona una imagen"), SELECT_FILE);
+                    intent.createChooser(intent, "Selecciona una imagen"), SELECT_FILE);*/
+            /*-----------------------------------------------------------------------------*/
+            Intent i = new Intent(); // nuevo Intent
+            i.setAction(android.content.Intent.ACTION_VIEW); // clase de acción
+            i.setType("image/*"); // a que tipo de datos queremos aplicar la acción
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // queremos un task nuevo
+            startActivity(i);
 
         } else if (id == R.id.nav_videos) {
 
+            Intent i = new Intent();
+            i.setAction(android.content.Intent.ACTION_VIEW);
+            i.setType("video/*");
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // queremos un task nuevo
+            startActivity(i);
 
         } else if (id == R.id.nav_notas) {
 

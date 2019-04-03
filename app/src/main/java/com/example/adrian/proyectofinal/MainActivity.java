@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this,"Introduce un usuario diferente", Toast.LENGTH_SHORT).show();
             }
         }
-
     }
 
     public  void  registrar(String nombre, String pass) {
@@ -101,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
             db.close();
             etNombre.setText("");
             etPass.setText("");
-
     }
 
     public boolean comprobarBD(String nombre, String pass){
@@ -118,32 +116,5 @@ public class MainActivity extends AppCompatActivity {
         fila.close();
         db.close();
         return false;
-
-
-
-
-
-
-
-
-
-
-
-
-        /*
-        String[] args = new String[] {nombre};
-
-            Cursor elCursor = db.rawQuery("select clave, nombre from usuarios where nombre =?", args);
-            if(elCursor.moveToFirst()){
-
-                do{
-                    String usuarioEncontrado= elCursor.getString(1);
-                    Toast.makeText(this,"Usuario: "+usuarioEncontrado+" ya existe", Toast.LENGTH_SHORT).show();
-                }while(elCursor.moveToNext());
-
-                db.close();
-            }
-            return false;
-        */
     }
 }
