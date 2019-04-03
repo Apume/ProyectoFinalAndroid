@@ -17,4 +17,5 @@
     <string name="modificar">Modificar</string>
     <string name="volver">Volver</string>
     <string name="bienvenido">BIENVENIDO</string>
+    <string name="hintGestion">Inserta un usuario</string>
 </resources>
