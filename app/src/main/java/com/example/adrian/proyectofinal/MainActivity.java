@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         bConfirmarRegistro=findViewById(R.id.bConfrirmarRegistro);
         bConfirmarRegistro.setVisibility(View.INVISIBLE);
 
+
         if(!comprobarBD("root","root")){
             registrar("root", "root");
         }
