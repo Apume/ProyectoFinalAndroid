@@ -12,30 +12,27 @@ public class PantallaAdmin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_admin);
     }
-    public void cerrarSesion(View v)
-    {
+
+
+    public void borrar(View v){
+
+    }
+
+    public void modificar(View v){
+
+    }
+
+    public void agregar(View v){
+
+    }
+
+    public void cerrarSesion(View v){
         Intent i = new Intent(this, MainActivity.class);
         finish();
         startActivity(i);
     }
-
-    public void borrar(View v)
-    {
-
-    }
-
-    public void modificar(View v)
-    {
-
-    }
-
-    public void agregar(View v)
-    {
-
-    }
-
     @Override
-    public void onBackPressed(){
+    public void onBackPressed(){ //metodo del boton fisico atrás del telefono
         //dejar en blanco esto inutilizara el botón
     }
 }

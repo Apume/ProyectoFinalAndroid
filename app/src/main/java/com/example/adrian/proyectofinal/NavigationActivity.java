@@ -75,7 +75,7 @@ public class NavigationActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.optionCreditos){
             return true;
         }
 
@@ -88,6 +88,36 @@ public class NavigationActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        switch (id){
+            case R.id.nav_imagenes:
+                Intent i = new Intent(); // nuevo Intent
+                i.setAction(android.content.Intent.ACTION_VIEW); // clase de acción
+                i.setType("image/*"); // a que tipo de datos queremos aplicar la acción
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // queremos un task nuevo
+                startActivity(i);
+                break;
+
+            case R.id.nav_notas:
+
+                break;
+
+            case R.id.nav_sonidos:
+
+                break;
+
+            case R.id.nav_camara:
+
+                break;
+
+            case R.id.nav_cerrarSesion:
+
+                Intent intent = new Intent(this, MainActivity.class);
+                finish();
+                startActivity(intent);
+                break;
+        }
+
+        /*
         if (id == R.id.nav_imagenes) {
             /*int SELECT_FILE = 1;
             Intent intent = new Intent();
@@ -95,7 +125,7 @@ public class NavigationActivity extends AppCompatActivity
             intent.setAction(intent.ACTION_GET_CONTENT);
             startActivityForResult(
                     intent.createChooser(intent, "Selecciona una imagen"), SELECT_FILE);*/
-            /*-----------------------------------------------------------------------------*/
+            /*-----------------------------------------------------------------------------
             Intent i = new Intent(); // nuevo Intent
             i.setAction(android.content.Intent.ACTION_VIEW); // clase de acción
             i.setType("image/*"); // a que tipo de datos queremos aplicar la acción
@@ -107,6 +137,7 @@ public class NavigationActivity extends AppCompatActivity
         } else if (id == R.id.nav_sonidos) {
 
         }
+        */
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

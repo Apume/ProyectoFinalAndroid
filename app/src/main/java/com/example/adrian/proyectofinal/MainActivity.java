@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     //
-    private Button bConfirmarRegistro, bRegistrar, bEntrar;
+    private Button bConfirmarRegistro, bCancelarRegistro, bRegistrar, bEntrar;
     private TextView tvRegistro;
     private EditText etNombre, etPass;
     private String nombre, pass;
@@ -26,13 +26,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //--------------------
-
+        tvRegistro=findViewById(R.id.tvRegistrar);
         etNombre=findViewById(R.id.etNombre);
         etPass=findViewById(R.id.etPass);
         bRegistrar=findViewById(R.id.bRegistrar);
         bEntrar=findViewById(R.id.bEntrar);
         bConfirmarRegistro=findViewById(R.id.bConfrirmarRegistro);
+        bCancelarRegistro=findViewById(R.id.bCancelar);
+
+        tvRegistro.setVisibility(View.INVISIBLE);
         bConfirmarRegistro.setVisibility(View.INVISIBLE);
+        bCancelarRegistro.setVisibility(View.INVISIBLE);
 
 
         if(!comprobarBD("root","root")){
@@ -47,14 +51,14 @@ public class MainActivity extends AppCompatActivity {
         pass = etPass.getText().toString();
         if(!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(pass)) {
 
-                if (comprobarBD(nombre, pass)) {
-                    if(nombre.equals("root")  && pass.equals("root")){
+                if(comprobarBD(nombre, pass)) {
+                    if(nombre.equals("root") && pass.equals("root")){
                         startActivity(a);
-                    }
-                    else {
+                    }else{
+                        finish();
                         startActivity(i);
                     }
-                } else {
+                }else{
                     Toast.makeText(this, "Usuario o contraseña erroneos", Toast.LENGTH_SHORT).show();
                 }
 
@@ -75,28 +79,50 @@ public class MainActivity extends AppCompatActivity {
         etPass.setText("");
         bEntrar.setVisibility(View.INVISIBLE);
         bRegistrar.setVisibility(View.INVISIBLE);
-        bConfirmarRegistro.setVisibility(View.VISIBLE);
 
+        tvRegistro.setVisibility(View.VISIBLE);
+        bConfirmarRegistro.setVisibility(View.VISIBLE);
+        bCancelarRegistro.setVisibility(View.VISIBLE);
     }
 
     public void bConfirmar (View view){
-        bEntrar.setVisibility(View.VISIBLE);
-        bRegistrar.setVisibility(View.VISIBLE);
-        bConfirmarRegistro.setVisibility(View.INVISIBLE);
+
         nombre = etNombre.getText().toString();
         pass = etPass.getText().toString();
-        if(TextUtils.isEmpty(nombre) && TextUtils.isEmpty(pass)) {
+        if(TextUtils.isEmpty(nombre) || TextUtils.isEmpty(pass)) {
             etNombre.setError("Introduce un nombre");
             etPass.setError("Introduce una contraseña");
-            Toast.makeText(this,"rellena los campos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Por favor, rellena los campos vacios", Toast.LENGTH_SHORT).show();
 
         }else {
             if(!comprobarBD(nombre, pass)) {
                 registrar(nombre, pass);
+                tvRegistro.setVisibility(View.INVISIBLE);
+                bConfirmarRegistro.setVisibility(View.INVISIBLE);
+                bCancelarRegistro.setVisibility(View.INVISIBLE);
+                etNombre.setText("");
+                etPass.setText("");
+                bEntrar.setVisibility(View.VISIBLE);
+                bRegistrar.setVisibility(View.VISIBLE);
+
             }else{
-                Toast.makeText(this,"Introduce un usuario diferente", Toast.LENGTH_SHORT).show();
+                etNombre.requestFocus();
+                Toast.makeText(this,"Ya existe, Introduce un usuario diferente", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    public void bCancelarRegistro (View view){
+
+        tvRegistro.setVisibility(View.INVISIBLE);
+        bConfirmarRegistro.setVisibility(View.INVISIBLE);
+        bCancelarRegistro.setVisibility(View.INVISIBLE);
+        etNombre.setText("");
+        etPass.setText("");
+        bEntrar.setVisibility(View.VISIBLE);
+        bRegistrar.setVisibility(View.VISIBLE);
+
+
     }
 
     public void registrar(String nombre, String pass) {

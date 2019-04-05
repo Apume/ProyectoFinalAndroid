@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="etRegistrar_usuario">Registrar usuario</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="etiquetaGaleria">Galeria</string>
+    <string name="etiquetaNotas">Notas</string>
+    <string name="etiquetaSonidos">Sonidos</string>
+    <string name="etiquetaCamara">Camara</string>
+    <string name="creditos">Creditos</string>
+</resources>
