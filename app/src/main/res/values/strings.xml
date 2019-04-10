@@ -27,4 +27,6 @@
     <string name="creditos">Creditos</string>
     <string name="lista_de_usuarios">Lista de usuarios</string>
     <string name="iniciar_string_cerrarsesion">Iniciar sesion</string>
+    <string name="todo">TODO</string>
+    <string name="foto">Hacer foto</string>
 </resources>

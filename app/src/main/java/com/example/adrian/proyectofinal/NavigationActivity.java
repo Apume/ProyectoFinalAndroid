@@ -1,8 +1,14 @@
 package com.example.adrian.proyectofinal;
 
+import android.app.Activity;
+import android.content.CursorLoader;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,10 +23,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Gallery;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    private static final int PERMISSION_REQUEST_CODE = 1;
+    private final int TOMAR_FOTO = 55;
     private String nombreUser, passUser, user;
     private ImageView avatarUser;
     int id;
@@ -105,7 +113,17 @@ public class NavigationActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
-
+    private Intent elintent;
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CODE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    startActivity(elintent);
+                }
+                break;
+        }
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -153,11 +171,11 @@ public class NavigationActivity extends AppCompatActivity
                 break;
 
             case R.id.nav_camara:
-
+                Intent lafoto = new Intent(this, capturaActivity.class);
+                startActivity(lafoto);
                 break;
 
             case R.id.nav_cerrarSesion:
-
                 Intent intent = new Intent(this, MainActivity.class);
                 finish();
                 startActivity(intent);
@@ -190,4 +208,5 @@ public class NavigationActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }

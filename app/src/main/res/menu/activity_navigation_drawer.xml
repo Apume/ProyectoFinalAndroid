@@ -27,5 +27,6 @@
             android:icon="@android:drawable/btn_dialog"
             android:title="@string/cerrarSesion" />
     </group>
+    <item android:title="Item" />
 
 </menu>
