@@ -25,4 +25,6 @@
     <string name="etiquetaSonidos">Sonidos</string>
     <string name="etiquetaCamara">Camara</string>
     <string name="creditos">Creditos</string>
+    <string name="lista_de_usuarios">Lista de usuarios</string>
+    <string name="iniciar_string_cerrarsesion">Iniciar sesion</string>
 </resources>

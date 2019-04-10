@@ -16,17 +16,64 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Gallery;
+import android.widget.ImageView;
 
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private String nombreUser, passUser, user;
+    private ImageView avatarUser;
+    int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        /*
+        avatarUser = findViewById(R.id.avatarMenu);
+        nombreUser = getIntent().getStringExtra("nombreUser");
+        passUser = getIntent().getStringExtra("passUser");
+
+
+        if(nombreUser.equals("zizu") && passUser.equals("loli")){
+            user = "zizu";
+        }else if(nombreUser.equals("vitilla") && passUser.equals("tortilla")){
+            user = "vitilla";
+        }else if(nombreUser.equals("adri") && passUser.equals("dri")){
+            user = "adri";
+        }else if(nombreUser.equals("jairo") && passUser.equals("4k")){
+            user = "jairo";
+        }
+
+
+
+        switch (user)
+        {
+            case "zizu":
+                id = getResources().getIdentifier("avatarzizu", "drawable", getPackageName());
+                avatarUser.setImageResource(id);
+                break;
+
+            case "vitilla":
+                id = getResources().getIdentifier("avatarvitilla", "drawable", getPackageName());
+                avatarUser.setImageResource(id);
+                break;
+
+            case "adri":
+                //avatarUser.setImageResource();
+                break;
+
+            case "jairo":
+                id = getResources().getIdentifier("avatarjairo", "drawable", getPackageName());
+                avatarUser.setImageResource(id);
+                break;
+        }
+
+        */
 
     // Boton de enviar correo
 

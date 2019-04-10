@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#427E7E</color>
-    <color name="colorPrimaryDark">#38454B</color>
-    <color name="colorAccent">#FFFFFF</color>
+    <color name="colorPrimary">#0B595D</color>
+    <color name="colorPrimaryDark">#022A2B</color>
+    <color name="colorAccent">#B4FFFFFF</color>
+    <color name="fondoListaUsers">#437686</color>
 </resources>

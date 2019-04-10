@@ -17,7 +17,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     //
     private Button bConfirmarRegistro, bCancelarRegistro, bRegistrar, bEntrar;
-    private TextView tvRegistro;
+    private TextView tvRegistro, tvInicioSesion;
     private EditText etNombre, etPass;
     private String nombre, pass;
     @Override
@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         //--------------------
         tvRegistro=findViewById(R.id.tvRegistrar);
+        tvInicioSesion=findViewById(R.id.tvIniciarSesion);
         etNombre=findViewById(R.id.etNombre);
         etPass=findViewById(R.id.etPass);
         bRegistrar=findViewById(R.id.bRegistrar);
@@ -38,30 +39,46 @@ public class MainActivity extends AppCompatActivity {
         bConfirmarRegistro.setVisibility(View.INVISIBLE);
         bCancelarRegistro.setVisibility(View.INVISIBLE);
 
-
         if(!comprobarBD("root","root")){
             registrar("root", "root");
         }
 
+        if(!comprobarBD("zizu","loli")){
+            registrar("zizu", "loli");
+        }
+
+        if(!comprobarBD("vitilla","tortilla")){
+            registrar("vitilla", "tortilla");
+        }
+
+        if(!comprobarBD("jairo","4k")){
+            registrar("jairo", "4k");
+        }
+
+        if(!comprobarBD("adri","dri")){
+            registrar("adri", "dri");
+        }
     }
+
     public void bEntrar (View view){
         Intent i = new Intent(this, NavigationActivity.class);
         Intent a = new Intent(this, PantallaAdmin.class);
         nombre = etNombre.getText().toString();
         pass = etPass.getText().toString();
         if(!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(pass)) {
-
                 if(comprobarBD(nombre, pass)) {
                     if(nombre.equals("root") && pass.equals("root")){
+                        finish();
                         startActivity(a);
                     }else{
+                        //i.putExtra("nombreUser", nombre);
+                        //i.putExtra("passUser", pass);
                         finish();
                         startActivity(i);
                     }
                 }else{
                     Toast.makeText(this, "Usuario o contraseña erroneos", Toast.LENGTH_SHORT).show();
                 }
-
         }else{
             if(TextUtils.isEmpty(nombre)) {
                 etNombre.setError("Introduce un nombre");
@@ -75,10 +92,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void bRegistrar (View view){
+        tvInicioSesion.setVisibility(View.INVISIBLE);
         etNombre.setText("");
         etPass.setText("");
         bEntrar.setVisibility(View.INVISIBLE);
         bRegistrar.setVisibility(View.INVISIBLE);
+
 
         tvRegistro.setVisibility(View.VISIBLE);
         bConfirmarRegistro.setVisibility(View.VISIBLE);
@@ -97,7 +116,9 @@ public class MainActivity extends AppCompatActivity {
         }else {
             if(!comprobarBD(nombre, pass)) {
                 registrar(nombre, pass);
+                Toast.makeText(this,"Usuario: "+nombre+" registrado correctamente", Toast.LENGTH_SHORT).show();
                 tvRegistro.setVisibility(View.INVISIBLE);
+                tvInicioSesion.setVisibility(View.VISIBLE);
                 bConfirmarRegistro.setVisibility(View.INVISIBLE);
                 bCancelarRegistro.setVisibility(View.INVISIBLE);
                 etNombre.setText("");
@@ -107,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
 
             }else{
                 etNombre.requestFocus();
+                etNombre.setText("");
+                etPass.setText("");
                 Toast.makeText(this,"Ya existe, Introduce un usuario diferente", Toast.LENGTH_SHORT).show();
             }
         }
@@ -115,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
     public void bCancelarRegistro (View view){
 
         tvRegistro.setVisibility(View.INVISIBLE);
+        tvInicioSesion.setVisibility(View.VISIBLE);
         bConfirmarRegistro.setVisibility(View.INVISIBLE);
         bCancelarRegistro.setVisibility(View.INVISIBLE);
         etNombre.setText("");
@@ -134,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
             registro.put("nombre",nombre);
 
             db.insert("usuarios",null, registro);
-            Toast.makeText(this,"Usuario: "+nombre+" registrado correctamente", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,"Usuario: "+nombre+" registrado correctamente", Toast.LENGTH_SHORT).show();
             db.close();
             etNombre.setText("");
             etPass.setText("");
