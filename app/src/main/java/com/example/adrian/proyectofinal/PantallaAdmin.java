@@ -14,16 +14,53 @@ import android.widget.TextView;
 
 public class PantallaAdmin extends AppCompatActivity {
 
-    AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"administracion",null,1);
-    SQLiteDatabase db = admin.getWritableDatabase();
+    EditText etGestionarUs;
+    AdminSQLiteOpenHelper admin;
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_admin);
 
+        etGestionarUs = findViewById(R.id.etGestionUsers);
+        //bd
+        admin = new AdminSQLiteOpenHelper(this,"administracion",null,1);
+        db = admin.getWritableDatabase();
+        justDoIt();
+    }
+
+
+
+    public void borrar(View v){
+        String unNombre = etGestionarUs.getText().toString();
+        //Cursor filaBorar = db.rawQuery("delete from usuarios where nombre = " + unNombre, null);
+        //filaBorar.close();
+
+        //justDoIt();
+
+    }
+
+    public void modificar(View v){
+
+    }
+
+    public void agregar(View v){
+
+    }
+
+    public void cerrarSesion(View v){
+        Intent i = new Intent(this, MainActivity.class);
+        finish();
+        startActivity(i);
+    }
+    @Override
+    public void onBackPressed(){ //metodo del boton fisico atrás del telefono
+        //dejar en blanco esto inutilizara el botón
+    }
+
+    public void justDoIt(){
         //creamos los objetos necesarios
-        EditText etGestionarUs = findViewById(R.id.etGestionUsers);
         ScrollView svUsuarios = findViewById(R.id.svListaNombres);
         TextView tv = null;
 
@@ -34,8 +71,6 @@ public class PantallaAdmin extends AppCompatActivity {
         //obtenemos la consulta de todos los usuarios y los añadimos a text view
 //        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"administracion",null,1);
 //        SQLiteDatabase db = admin.getWritableDatabase();
-        //
-
         Cursor fila = db.rawQuery("select nombre, clave from usuarios", null);
 
 
@@ -56,28 +91,5 @@ public class PantallaAdmin extends AppCompatActivity {
 
         //finalmente añadimos el layout al scrollView
         svUsuarios.addView(ll);
-    }
-
-
-    public void borrar(View v){
-//        Cursor fila = db.rawQuery("selec")
-    }
-
-    public void modificar(View v){
-
-    }
-
-    public void agregar(View v){
-
-    }
-
-    public void cerrarSesion(View v){
-        Intent i = new Intent(this, MainActivity.class);
-        finish();
-        startActivity(i);
-    }
-    @Override
-    public void onBackPressed(){ //metodo del boton fisico atrás del telefono
-        //dejar en blanco esto inutilizara el botón
     }
 }
