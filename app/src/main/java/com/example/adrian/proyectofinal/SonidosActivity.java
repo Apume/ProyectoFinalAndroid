@@ -58,17 +58,4 @@ public class SonidosActivity extends AppCompatActivity implements View.OnClickLi
 
         }
     }
-    /*
-    public void play(View v)
-    {
-        mediaplayer.start();
-    }
-    public void pause(View v)
-    {
-        mediaplayer.pause();
-    }
-    public void stop(View v)
-    {
-        mediaplayer.stop();
-    }*/
 }

@@ -14,7 +14,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="73dp"
         android:layout_marginTop="51dp"
-        android:onClick="play"
+        android:onClick="onClick"
         android:text="@string/play" />
 
     <Button
@@ -25,7 +25,7 @@
         android:layout_marginStart="76dp"
         android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/bPlay"
-        android:onClick="pause"
+        android:onClick="onClick"
         android:text="@string/pause" />
 
     <Button
@@ -38,7 +38,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="59dp"
         android:layout_marginEnd="0dp"
-        android:onClick="stop"
+        android:onClick="onClick"
         android:text="@string/stop" />
 
     <ListView
