@@ -16,6 +16,8 @@ public class capturaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_captura);
+        this.setTitle(R.string.titulo_camara);
+
     }
     public void capturarFoto(View v) {
         Intent intent = new Intent(

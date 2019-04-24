@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">ProyectoFinal</string>
+    <string name="titulo_reproductor">Reproductor de música</string>
+    <string name="titulo_camara">Camara</string>
     <string name="boton">Pasar</string>
-    <string name="title_activity_navigation">NavigationActivity</string>
+    <string name="title_activity_navigation">Menu principal</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Aplicacion Final</string>

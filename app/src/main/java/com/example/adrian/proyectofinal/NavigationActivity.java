@@ -57,8 +57,6 @@ public class NavigationActivity extends AppCompatActivity
             user = "jairo";
         }
 
-
-
         switch (user)
         {
             case "zizu":
@@ -79,6 +77,12 @@ public class NavigationActivity extends AppCompatActivity
                 id = getResources().getIdentifier("avatarjairo", "drawable", getPackageName());
                 avatarUser.setImageResource(id);
                 break;
+
+            default:
+                id = getResources().getIdentifier("iconodemo", "drawable", getPackageName());
+                avatarUser.setImageResource(id);
+                break;
+
         }
 
         */
