@@ -34,6 +34,7 @@ public class PantallaAdmin extends AppCompatActivity {
         //obtenemos la consulta de todos los usuarios y los añadimos a text view
 //        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"administracion",null,1);
 //        SQLiteDatabase db = admin.getWritableDatabase();
+        //
 
         Cursor fila = db.rawQuery("select nombre, clave from usuarios", null);
 
