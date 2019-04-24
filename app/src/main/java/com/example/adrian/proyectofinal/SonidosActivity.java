@@ -18,8 +18,6 @@ public class SonidosActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sonidos);
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         //Inicializamos la clase MediaPlayer asociandole el fichero de Audio
         mediaplayer = MediaPlayer.create(this, R.raw.caillou);
 
@@ -60,4 +58,17 @@ public class SonidosActivity extends AppCompatActivity implements View.OnClickLi
 
         }
     }
+    /*
+    public void play(View v)
+    {
+        mediaplayer.start();
+    }
+    public void pause(View v)
+    {
+        mediaplayer.pause();
+    }
+    public void stop(View v)
+    {
+        mediaplayer.stop();
+    }*/
 }
