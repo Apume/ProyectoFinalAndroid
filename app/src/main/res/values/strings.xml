@@ -29,4 +29,7 @@
     <string name="iniciar_string_cerrarsesion">Iniciar sesion</string>
     <string name="todo">TODO</string>
     <string name="foto">Hacer foto</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="stop">Stop</string>
 </resources>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SonidosActivity">
+
+    <Button
+        android:id="@+id/bPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lvSonidos"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="73dp"
+        android:layout_marginTop="51dp"
+        android:text="@string/play" />
+
+    <Button
+        android:id="@+id/bPause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/bPlay"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/bPlay"
+        android:text="@string/pause" />
+
+    <Button
+        android:id="@+id/bStop"
+        android:layout_width="247dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bPlay"
+        android:layout_alignStart="@+id/bPlay"
+        android:layout_alignEnd="@+id/bPause"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="0dp"
+        android:text="@string/stop" />
+
+    <ListView
+        android:id="@+id/lvSonidos"
+        android:layout_width="match_parent"
+        android:layout_height="337dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
+</RelativeLayout>
