@@ -4,19 +4,33 @@ import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class SonidosActivity extends AppCompatActivity implements View.OnClickListener{
     private Button bPlay;
     private Button bPause;
     private Button bStop;
     private MediaPlayer mediaplayer;
+    private ListView lvSonidos;
+    private ArrayList<String> ArraySonidos;
+    private ArrayAdapter adaptador;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sonidos);
+        //meter las canciones en el listview
+        lvSonidos= findViewById(R.id.lvSonidos);
+        ArraySonidos = new ArrayList<>();
+        ArraySonidos.add("caillou");
+        ArraySonidos.add("lonely");
+
+        adaptador = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,ArraySonidos);
+        lvSonidos.setAdapter(adaptador);
 
         //Inicializamos la clase MediaPlayer asociandole el fichero de Audio
         mediaplayer = MediaPlayer.create(this, R.raw.caillou);
