@@ -168,7 +168,8 @@ public class NavigationActivity extends AppCompatActivity
                 break;
 
             case R.id.nav_sonidos:
-
+                Intent sonidos = new Intent(this,SonidosActivity.class);
+                startActivity(sonidos);
                 break;
 
             case R.id.nav_camara:
