@@ -54,6 +54,7 @@ public class PantallaAdmin extends AppCompatActivity {
         finish();
         startActivity(i);
     }
+
     @Override
     public void onBackPressed(){ //metodo del boton fisico atrás del telefono
         //dejar en blanco esto inutilizara el botón

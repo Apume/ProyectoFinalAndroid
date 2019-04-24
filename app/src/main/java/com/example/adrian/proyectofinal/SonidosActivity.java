@@ -29,6 +29,8 @@ public class SonidosActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sonidos);
+
+
         //meter las canciones en el listview
         lvSonidos= findViewById(R.id.lvSonidos);
         ArraySonidos = new ArrayList<>();
@@ -45,6 +47,7 @@ public class SonidosActivity extends AppCompatActivity implements View.OnClickLi
         bPlay= findViewById(R.id.bPlay);
         bStop= findViewById(R.id.bStop);
         bPause= findViewById(R.id.bPause);
+        bPause.setVisibility(View.INVISIBLE);
 
         //Y les asignamos el controlador de eventos
         bPlay.setOnClickListener(this);
@@ -57,16 +60,25 @@ public class SonidosActivity extends AppCompatActivity implements View.OnClickLi
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
                 String itemval = (String)lvSonidos.getItemAtPosition(position);
-                Toast.makeText(getApplicationContext(), "Ha elegido " + itemval, Toast.LENGTH_SHORT).show();
-                nombreCancion = itemval;
-                /*if(position==0)
-                {
-                    nombreCancion = "caillou";
+                Toast.makeText(getApplicationContext(), "Has elegido " + itemval, Toast.LENGTH_SHORT).show();
+                if(mediaplayer!=null){
+                    mediaplayer.stop();
+                    mediaplayer.release();
                 }
-                if(position==1)
-                {
-                   nombreCancion = "lonely";
-                }*/
+
+                nombreCancion = itemval;
+
+                if(nombreCancion.equals("caillou"))                {
+
+                    mediaplayer = MediaPlayer.create(getBaseContext(), R.raw.caillou);
+                }
+
+                if(nombreCancion.equals("lonely"))                {
+
+                    mediaplayer = MediaPlayer.create(getBaseContext(), R.raw.lonely);
+                }
+
+
             }
 
         });
@@ -76,28 +88,46 @@ public class SonidosActivity extends AppCompatActivity implements View.OnClickLi
     //----------------------------------------------
     @Override
     public void onClick(View v) {
+        /*
         if(nombreCancion.equals("caillou"))
         {
+            if(mediaplayer!=null){
+                mediaplayer.stop();
+                mediaplayer.release();
+            }
             mediaplayer = MediaPlayer.create(this, R.raw.caillou);
         }
+
         if(nombreCancion.equals("lonely"))
         {
+            if(mediaplayer!=null){
+                mediaplayer.stop();
+                mediaplayer.release();
+            }
             mediaplayer = MediaPlayer.create(this, R.raw.lonely);
         }
+        */
         switch(v.getId()){
             case R.id.bPlay:
 
                 //Iniciamos el audio
+                bPlay.setVisibility(View.INVISIBLE);
+                bPause.setVisibility(View.VISIBLE);
                 mediaplayer.start();
                 break;
+
             case R.id.bPause:
                 //Pausamos el audio
+                bPlay.setVisibility(View.VISIBLE);
+                bPause.setVisibility(View.INVISIBLE);
                 mediaplayer.pause();
                 break;
+
             case R.id.bStop:
                 //Paramos el audio y volvemos a inicializar
                 try {
                     mediaplayer.stop();
+                    //mediaplayer.release();
                     mediaplayer.prepare();
                     mediaplayer.seekTo(0);
                 } catch (IOException e) {
