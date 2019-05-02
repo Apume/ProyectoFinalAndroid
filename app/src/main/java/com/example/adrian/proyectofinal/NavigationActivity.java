@@ -151,6 +151,7 @@ public class NavigationActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.optionCreditos){
+            Toast.makeText(this, "Creado por: Adrián, Cristian, Jairo, y Victor", Toast.LENGTH_LONG).show();
             return true;
         }
 
