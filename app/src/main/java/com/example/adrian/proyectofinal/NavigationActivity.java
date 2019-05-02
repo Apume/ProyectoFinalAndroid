@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -22,6 +23,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Gallery;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -32,7 +34,8 @@ public class NavigationActivity extends AppCompatActivity
     private String nombreUser, passUser, user;
     private ImageView avatarUser;
     int id;
-
+    private ImageButton botonFondo;
+    private Image imagenuno, imagendos, imagentres;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,8 @@ public class NavigationActivity extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        botonFondo = findViewById(R.id.botonFondo);
 
         /*
         avatarUser = findViewById(R.id.avatarMenu);
@@ -213,6 +218,42 @@ public class NavigationActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    public void cambiarImagen (View v)
+    {
+        int num = getRandomInteger(6,1);
+        if(num == 1)
+        {
+            id = getResources().getIdentifier("fondodos", "drawable", getPackageName());
+            botonFondo.setImageResource(id);
+        }
+        if(num == 2)
+        {
+            id = getResources().getIdentifier("fondotres", "drawable", getPackageName());
+            botonFondo.setImageResource(id);
+        }
+        if(num == 3)
+        {
+            id = getResources().getIdentifier("fondouno", "drawable", getPackageName());
+            botonFondo.setImageResource(id);
+
+        }
+        if(num == 4)
+        {
+            id = getResources().getIdentifier("fondocuatro", "drawable", getPackageName());
+            botonFondo.setImageResource(id);
+
+        }
+        if(num == 5)
+        {
+            id = getResources().getIdentifier("fondocinco", "drawable", getPackageName());
+            botonFondo.setImageResource(id);
+
+        }
+    }
+    // método intener aleatorio entre maximo y minimo parametrizados.
+    public static int getRandomInteger(int maximum, int minimum){
+        return ((int) (Math.random()*(maximum - minimum))) + minimum;
     }
 
 }
