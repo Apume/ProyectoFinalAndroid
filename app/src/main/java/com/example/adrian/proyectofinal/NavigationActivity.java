@@ -97,6 +97,7 @@ public class NavigationActivity extends AppCompatActivity
             case 3:
                 id = getResources().getIdentifier("avataradri", "drawable", getPackageName());
                 avatarUser.setImageResource(id);
+
                 break;
 
             case 4:
