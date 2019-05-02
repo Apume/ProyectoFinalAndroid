@@ -22,6 +22,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Gallery;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +35,7 @@ public class NavigationActivity extends AppCompatActivity
     private ImageView avatarUser;
     private TextView tvNombreUserNav;
     private int id, user;
+    private ImageButton botonFondo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,27 +45,16 @@ public class NavigationActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-    // Boton de enviar correo
-
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        botonFondo = findViewById(R.id.botonFondo);
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         //con la siguiente linea obtienes el acceso a los componentes del navigationHeader
-
         View viewHeader = navigationView.getHeaderView(0);
 
         navigationView.setNavigationItemSelectedListener(this);
@@ -161,6 +152,7 @@ public class NavigationActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.optionCreditos){
+            Toast.makeText(this, "Creado por: Adrián, Cristian, Jairo, y Victor", Toast.LENGTH_LONG).show();
             return true;
         }
 
@@ -205,31 +197,41 @@ public class NavigationActivity extends AppCompatActivity
                 break;
         }
 
-        /*
-        if (id == R.id.nav_imagenes) {
-            /*int SELECT_FILE = 1;
-            Intent intent = new Intent();
-            intent.setType("image/*");
-            intent.setAction(intent.ACTION_GET_CONTENT);
-            startActivityForResult(
-                    intent.createChooser(intent, "Selecciona una imagen"), SELECT_FILE);*/
-            /*-----------------------------------------------------------------------------
-            Intent i = new Intent(); // nuevo Intent
-            i.setAction(android.content.Intent.ACTION_VIEW); // clase de acción
-            i.setType("image/*"); // a que tipo de datos queremos aplicar la acción
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // queremos un task nuevo
-            startActivity(i);
-
-        }  else if (id == R.id.nav_notas) {
-
-        } else if (id == R.id.nav_sonidos) {
-
-        }
-        */
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    // método intener aleatorio entre maximo y minimo parametrizados.
+    public static int getRandomInteger(int maximum, int minimum){
+        return ((int) (Math.random()*(maximum - minimum))) + minimum;
+    }
+
+    public void cambiarImagen (View v) {
+        int num = getRandomInteger(6,1);
+
+        switch (num){
+            case 1:
+                id = getResources().getIdentifier("fondouno", "drawable", getPackageName());
+                botonFondo.setImageResource(id);
+                break;
+            case 2:
+                id = getResources().getIdentifier("fondodos", "drawable", getPackageName());
+                botonFondo.setImageResource(id);
+                break;
+            case 3:
+                id = getResources().getIdentifier("fondotres", "drawable", getPackageName());
+                botonFondo.setImageResource(id);
+                break;
+            case 4:
+                id = getResources().getIdentifier("fondocuatro", "drawable", getPackageName());
+                botonFondo.setImageResource(id);
+                break;
+            case 5:
+                id = getResources().getIdentifier("fondocinco", "drawable", getPackageName());
+                botonFondo.setImageResource(id);
+                break;
+        }
     }
 
 }
