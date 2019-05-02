@@ -23,15 +23,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Gallery;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final int PERMISSION_REQUEST_CODE = 1;
     private final int TOMAR_FOTO = 55;
-    private String nombreUser, passUser, user;
+    private String nombreUser, passUser;
     private ImageView avatarUser;
-    int id;
+    private TextView tvNombreUserNav;
+    private int id, user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,51 +43,6 @@ public class NavigationActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        /*
-        avatarUser = findViewById(R.id.avatarMenu);
-        nombreUser = getIntent().getStringExtra("nombreUser");
-        passUser = getIntent().getStringExtra("passUser");
-
-
-        if(nombreUser.equals("zizu") && passUser.equals("loli")){
-            user = "zizu";
-        }else if(nombreUser.equals("vitilla") && passUser.equals("tortilla")){
-            user = "vitilla";
-        }else if(nombreUser.equals("adri") && passUser.equals("dri")){
-            user = "adri";
-        }else if(nombreUser.equals("jairo") && passUser.equals("4k")){
-            user = "jairo";
-        }
-
-        switch (user)
-        {
-            case "zizu":
-                id = getResources().getIdentifier("avatarzizu", "drawable", getPackageName());
-                avatarUser.setImageResource(id);
-                break;
-
-            case "vitilla":
-                id = getResources().getIdentifier("avatarvitilla", "drawable", getPackageName());
-                avatarUser.setImageResource(id);
-                break;
-
-            case "adri":
-                //avatarUser.setImageResource();
-                break;
-
-            case "jairo":
-                id = getResources().getIdentifier("avatarjairo", "drawable", getPackageName());
-                avatarUser.setImageResource(id);
-                break;
-
-            default:
-                id = getResources().getIdentifier("iconodemo", "drawable", getPackageName());
-                avatarUser.setImageResource(id);
-                break;
-
-        }
-
-        */
 
     // Boton de enviar correo
 
@@ -105,8 +62,66 @@ public class NavigationActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        //con la siguiente linea obtienes el acceso a los componentes del navigationHeader
+
+        View viewHeader = navigationView.getHeaderView(0);
+
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
+
+        avatarUser = viewHeader.findViewById(R.id.avatarMenu);
+        tvNombreUserNav = viewHeader.findViewById(R.id.tvBienvenido);
+        nombreUser = getIntent().getStringExtra("nombreUser");
+        passUser = getIntent().getStringExtra("passUser");
+
+        asignarAvatares(nombreUser, passUser);
+    }
+
+    public void asignarAvatares(String nombreUser, String passUser){
+
+        if(nombreUser.equals("zizu") && passUser.equals("loli")){
+            user = 1;
+        }else if(nombreUser.equals("vitilla") && passUser.equals("tortilla")){
+            user = 2;
+        }else if(nombreUser.equals("adri") && passUser.equals("dri")){
+            user = 3;
+        }else
+            if(nombreUser.equals("jairo") && passUser.equals("4k")){
+            user = 4;
+        }
+
+        switch (user){
+            case 1:
+                id = getResources().getIdentifier("avatarzizu", "drawable", getPackageName());
+                avatarUser.setImageResource(id);
+                tvNombreUserNav.setText("Bienvenido "+nombreUser);
+                break;
+
+            case 2:
+                id = getResources().getIdentifier("avatarvitilla", "drawable", getPackageName());
+                avatarUser.setImageResource(id);
+                tvNombreUserNav.setText("Bienvenido "+nombreUser);
+                break;
+
+            case 3:
+                id = getResources().getIdentifier("avataradri", "drawable", getPackageName());
+                avatarUser.setImageResource(id);
+                break;
+
+            case 4:
+                id = getResources().getIdentifier("avatarjairo", "drawable", getPackageName());
+                avatarUser.setImageResource(id);
+                tvNombreUserNav.setText("Bienvenido "+nombreUser);
+                break;
+
+            default:
+                id = getResources().getIdentifier("iconodemo", "drawable", getPackageName());
+                avatarUser.setImageResource(id);
+                tvNombreUserNav.setText("Bienvenido "+nombreUser);
+
+        }
+
+
     }
 
     @Override
@@ -173,6 +188,8 @@ public class NavigationActivity extends AppCompatActivity
 
             case R.id.nav_sonidos:
                 Intent sonidos = new Intent(this,SonidosActivity.class);
+                sonidos.putExtra("nombreUser", nombreUser);
+                sonidos.putExtra("passUser", passUser);
                 startActivity(sonidos);
                 break;
 

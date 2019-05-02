@@ -71,8 +71,8 @@ public class MainActivity extends AppCompatActivity {
                         finish();
                         startActivity(a);
                     }else{
-                        //i.putExtra("nombreUser", nombre);
-                        //i.putExtra("passUser", pass);
+                        i.putExtra("nombreUser", nombre);
+                        i.putExtra("passUser", pass);
                         finish();
                         startActivity(i);
                     }
