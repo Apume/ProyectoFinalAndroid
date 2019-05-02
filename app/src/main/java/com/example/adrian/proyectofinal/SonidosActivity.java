@@ -22,7 +22,7 @@ public class SonidosActivity extends AppCompatActivity implements View.OnClickLi
     private ListView lvSonidos;
     private ArrayList<String> ArraySonidos;
     private ArrayAdapter adaptador;
-    private String nombreCancion;
+    private String nombreCancion, nombreUser, passUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,8 @@ public class SonidosActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_sonidos);
 
         this.setTitle(R.string.titulo_reproductor); //titulo del actionBar
+        nombreUser = getIntent().getStringExtra("nombreUser");
+        passUser = getIntent().getStringExtra("passUser");
 
 
         //meter las canciones en el listview
@@ -86,10 +88,14 @@ public class SonidosActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.bPlay:
-                //Iniciamos el audio
-                bPlay.setVisibility(View.INVISIBLE);
-                bPause.setVisibility(View.VISIBLE);
-                mediaplayer.start();
+                if(mediaplayer==null){
+                    Toast.makeText(getApplicationContext(), "Selecciona una canción primero", Toast.LENGTH_SHORT).show();
+                }else{
+                    //Iniciamos el audio
+                    bPlay.setVisibility(View.INVISIBLE);
+                    bPause.setVisibility(View.VISIBLE);
+                    mediaplayer.start();
+                }
                 break;
 
             case R.id.bPause:
@@ -120,9 +126,17 @@ public class SonidosActivity extends AppCompatActivity implements View.OnClickLi
         if(mediaplayer!=null){
             mediaplayer.stop();
             mediaplayer.release();
+            Intent i = new Intent(this, NavigationActivity.class);
+            i.putExtra("nombreUser", nombreUser);
+            i.putExtra("passUser", passUser);
+            startActivity(i);
+            this.finish();
+        }else{
+            Intent i = new Intent(this, NavigationActivity.class);
+            i.putExtra("nombreUser", nombreUser);
+            i.putExtra("passUser", passUser);
+            startActivity(i);
+            this.finish();
         }
-        Intent i = new Intent(this, NavigationActivity.class);
-        startActivity(i);
-        this.finish();
     }
 }
