@@ -176,7 +176,8 @@ public class NavigationActivity extends AppCompatActivity
                 break;
 
             case R.id.nav_notas:
-
+                Intent notas = new Intent(this, NotasActivity.class );
+                startActivity(notas);
                 break;
 
             case R.id.nav_sonidos:

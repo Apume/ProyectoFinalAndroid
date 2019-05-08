@@ -63,8 +63,9 @@ public class PantallaAdmin extends AppCompatActivity {
     public void justDoIt(){
         //creamos los objetos necesarios
         ScrollView svUsuarios = findViewById(R.id.svListaNombres);
-        TextView tv = null;
 
+        TextView tv = null;
+        
         //creamos un linear layout para pasarselo al scrollView
         LinearLayout ll = new LinearLayout(this);
         ll.setOrientation(LinearLayout.VERTICAL);
