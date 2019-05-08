@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SonidosActivity"></activity>
+        <activity android:name=".NotasActivity"></activity>
+        <activity android:name=".SonidosActivity" />
         <activity android:name=".capturaActivity" />
         <activity android:name=".PantallaAdmin" />
         <activity android:name=".MainActivity">
