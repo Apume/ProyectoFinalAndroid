@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -65,9 +64,7 @@ public class SonidosActivity extends AppCompatActivity implements View.OnClickLi
                     mediaplayer.stop();
                     mediaplayer.release();
                 }
-
                 nombreCancion = itemval;
-
                 if(nombreCancion.equals("caillou")){
                     bPlay.setVisibility(View.VISIBLE);
                     bPause.setVisibility(View.INVISIBLE);
@@ -121,7 +118,8 @@ public class SonidosActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     @Override
-    public void onBackPressed(){ //metodo del boton fisico atrás del telefono
+    public void onBackPressed(){
+        //metodo del boton fisico atrás del telefono
         //dejar en blanco esto inutilizara el botón
         if(mediaplayer!=null){
             mediaplayer.stop();
