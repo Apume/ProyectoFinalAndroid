@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -30,6 +31,7 @@ public class NotasActivity extends AppCompatActivity {
     private HashMap <String,String> lista = new HashMap();
     private File FILENAME = new File("/storage/emulated/0/Android/data/com.example.adrian.proyectofinal/files/notas.txt");
     private TextView tituloNota;
+    private String contenidoNota;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,18 +39,29 @@ public class NotasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notas);
         lvNotas = findViewById(R.id.lvNotas);
+
         listados();
-        escribir();
+
+        lvNotas.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long id) {
+                // TODO Auto-generated method stub
+
+                Intent e = new Intent(getApplicationContext(), EditorNotasActivity.class);
+                String notaSeleccionada = lvNotas.getItemAtPosition(position).toString();
+                contenidoNota = lista.get(notaSeleccionada);
+                e.putExtra("tituloNota",notaSeleccionada);
+                e.putExtra("contenidoNota",contenidoNota);
+                startActivity(e);
+            }
+        });
+
+
     }
     public void listados(){
 
         arrayNombreNotas = new ArrayList<>();
-        lista.put("Pepe","hoa");
-        lista.put("Paco","adios");
-        lista.put("Pepa","hoa");
-        lista.put("Pepo","hoa");
-        lista.put("Pepr","hoa");
-        lista.put("Pepw","hoa");
 
         Iterator it = lista.entrySet().iterator();
         while (it.hasNext()) {
@@ -80,4 +93,5 @@ public class NotasActivity extends AppCompatActivity {
         Intent i = new Intent(this,EditorNotasActivity.class);
         startActivity(i);
     }
+
 }
