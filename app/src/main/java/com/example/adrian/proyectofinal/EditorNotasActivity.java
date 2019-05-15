@@ -15,8 +15,15 @@ public class EditorNotasActivity extends AppCompatActivity {
 
         String elTitulo = getIntent().getStringExtra("tituloNota");
         String elContenido = getIntent().getStringExtra("contenidoNota");
-    }
-    public void leer(){
 
     }
+
+    public void modificar(){
+
+    }
+
+    public void borrar(){
+
+    }
+
 }
