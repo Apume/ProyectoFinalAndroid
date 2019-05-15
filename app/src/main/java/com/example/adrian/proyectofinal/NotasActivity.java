@@ -25,7 +25,7 @@ public class NotasActivity extends AppCompatActivity {
     private ArrayAdapter adaptador;
     private ArrayList<String> arrayNombreNotas;
     private HashMap <String,String> lista = new HashMap();
-    private File FILENAME = new File("./notas.csv");
+    private File FILENAME = new File("/storage/emulated/0/Android/data/com.example.adrian.proyectofinal/files/notas.txt");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
