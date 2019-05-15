@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#000850</color>
     <color name="colorAccent">#FFFFFF</color>
     <color name="fondoListaUsers">#437686</color>
+    <color name="colorFondos">#D7FFFFFF</color>
 </resources>
