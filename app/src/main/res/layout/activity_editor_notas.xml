@@ -8,8 +8,8 @@
 
     <EditText
         android:id="@+id/etContenidoNota"
-        android:layout_width="0dp"
-        android:layout_height="361dp"
+        android:layout_width="397dp"
+        android:layout_height="270dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
@@ -39,8 +39,9 @@
         android:id="@+id/btGuardar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="48dp"
+        android:onClick="modificar"
         android:text="@string/confirmarRegistro"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etContenidoNota" />
@@ -49,8 +50,9 @@
         android:id="@+id/btBorrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="60dp"
+        android:onClick="borrar"
         android:text="@string/borrar"
         app:layout_constraintStart_toEndOf="@+id/btGuardar"
         app:layout_constraintTop_toBottomOf="@+id/etContenidoNota" />
@@ -59,8 +61,9 @@
         android:id="@+id/btCancelar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="168dp"
         android:layout_marginTop="48dp"
+        android:onClick="cancelar"
         android:text="@string/cancelar"
         app:layout_constraintStart_toEndOf="@+id/btGuardar"
         app:layout_constraintTop_toBottomOf="@+id/etContenidoNota" />
