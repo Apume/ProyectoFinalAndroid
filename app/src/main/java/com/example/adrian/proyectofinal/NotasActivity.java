@@ -1,10 +1,13 @@
 package com.example.adrian.proyectofinal;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedWriter;
@@ -25,16 +28,17 @@ public class NotasActivity extends AppCompatActivity {
     private ArrayAdapter adaptador;
     private ArrayList<String> arrayNombreNotas;
     private HashMap <String,String> lista = new HashMap();
-    private File FILENAME = new File("./notas.csv");
+    private File FILENAME = new File("/storage/emulated/0/Android/data/com.example.adrian.proyectofinal/files/notas.txt");
+    private TextView tituloNota;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notas);
         lvNotas = findViewById(R.id.lvNotas);
-        etNotas = findViewById(R.id.editTextNotas);
         listados();
         escribir();
-
     }
     public void listados(){
 
@@ -45,6 +49,7 @@ public class NotasActivity extends AppCompatActivity {
         lista.put("Pepo","hoa");
         lista.put("Pepr","hoa");
         lista.put("Pepw","hoa");
+
         Iterator it = lista.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry e = (Map.Entry)it.next();
@@ -56,14 +61,11 @@ public class NotasActivity extends AppCompatActivity {
     }
     public void escribir(){
 
-
+        String contenido = etNotas.getText().toString();
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILENAME))) {
             String datosAloj = "";
             for (Map.Entry<String, String> entry : lista.entrySet()) {
-                /*Alojamiento alojamientoEnMemoria = entry.getValue(); // coje los valores del objeto recorriedo en el for
-                datosAloj = alojamientoEnMemoria.getInfoAlojamientoParaArchivo(); // formateo los datos del objeto que utilizo para llamar al meto getInfoAlojamientoParaArchivo
-                //System.out.println(datosAloj);*/
-                bw.write(entry.getKey()+ ":" +entry.getValue()+"\n"); // escribe los datos completos de cada alojamiento junto con los saltos de linea correspondientes
+                bw.write(entry.getKey()+ ":" +entry.getValue()+"\n");
             }
         } catch (IOException e) {
             System.out.println("Error E/S: " + e);
@@ -73,5 +75,9 @@ public class NotasActivity extends AppCompatActivity {
     }
     public void leer(){
 
+    }
+    public void crearNota(View v){
+        Intent i = new Intent(this,EditorNotasActivity.class);
+        startActivity(i);
     }
 }
