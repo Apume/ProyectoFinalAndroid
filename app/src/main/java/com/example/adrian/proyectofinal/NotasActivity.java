@@ -11,8 +11,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -86,9 +89,29 @@ public class NotasActivity extends AppCompatActivity {
         Toast.makeText(this,"texto escrito",Toast.LENGTH_SHORT).show();
 
     }
-    public void leer(){
 
-    }
+    /*public boolean leer(){
+        String titulo,contenido;
+        try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))){
+            String lineaLeida = br.readLine();
+            while(lineaLeida != null){
+                String[] partesLinea = lineaLeida.split(":");
+                titulo = partesLinea[0];
+                contenido = partesLinea[1];
+                nota
+                lineaLeida = br.readLine();
+            }
+            br.close();
+            return true;
+
+        } catch (FileNotFoundException e) {
+            return false;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return  false;
+        }
+    }*/
+
     public void crearNota(View v){
         Intent i = new Intent(this,EditorNotasActivity.class);
         startActivity(i);

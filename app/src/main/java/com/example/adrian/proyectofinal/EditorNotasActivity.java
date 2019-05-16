@@ -5,10 +5,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class EditorNotasActivity extends AppCompatActivity {
     private EditText etTitulo,contenidoNota;
     private String elTitulo, elContenido;
+    private File FILENAME = new File("/storage/emulated/0/Android/data/com.example.adrian.proyectofinal/files/notas.txt");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +27,7 @@ public class EditorNotasActivity extends AppCompatActivity {
         String elTitulo = getIntent().getStringExtra("tituloNota");
         String elContenido = getIntent().getStringExtra("contenidoNota");
 
-        comprobarCampos(elTitulo, elContenido);
+        comprobarCampos(elTitulo,elContenido);
 
     }
 
@@ -27,9 +35,14 @@ public class EditorNotasActivity extends AppCompatActivity {
         Intent i = new Intent(this, NotasActivity.class);
         elTitulo = etTitulo.getText().toString();
         elContenido = contenidoNota.getText().toString();
-        i.putExtra("titulo",elTitulo);
-        i.putExtra("contenido", elContenido);
-        startActivity(i);
+        if(comprobarCampos(elTitulo,elContenido)== false){
+            Toast.makeText(this,"Rellene los campos",Toast.LENGTH_SHORT).show();
+        }else{
+            i.putExtra("titulo",elTitulo);
+            i.putExtra("contenido", elContenido);
+            startActivity(i);
+        }
+
 
     }
 
@@ -43,17 +56,14 @@ public class EditorNotasActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void comprobarCampos(String elTitulo, String elContenido){
-        if(elTitulo == null){
-            etTitulo.setText("No hay titulo");
+
+    public boolean comprobarCampos(String elTitulo, String elContenido){
+        if(elTitulo == null || elContenido == null){
+            Toast.makeText(this,"Rellene los campos",Toast.LENGTH_SHORT).show();
+            return true;
         }else{
-            etTitulo.setText(elTitulo);
+            return false;
         }
 
-        if(elContenido == null){
-            contenidoNota.setText("No hay contenido");
-        }else{
-            contenidoNota.setText(elContenido);
-        }
     }
 }
