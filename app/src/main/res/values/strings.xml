@@ -36,4 +36,7 @@
     <string name="stop">Stop</string>
     <string name="inserta_una_pass">Inserta una contraseña</string>
     <string name="inserta_un_usuario">Inserta un usuario</string>
+    <string name="nombre_nota">Nombre Nota</string>
+    <string name="guardar">Guardar</string>
+    <string name="crear_nota_nueva">✚ Crear nota nueva</string>
 </resources>

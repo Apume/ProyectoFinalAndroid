@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".EditarNotasActivity">
+
+    <EditText
+        android:id="@+id/etNombreNota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/nombre_nota"
+        android:inputType="textPersonName"
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:targetApi="o" />
+
+    <EditText
+        android:id="@+id/etContenidoNota"
+        android:layout_width="0dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etNombreNota"
+        app:layout_constraintTop_toBottomOf="@+id/etNombreNota"
+        tools:targetApi="o" />
+
+    <Button
+        android:id="@+id/bGuardar"
+        android:layout_width="150dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="8dp"
+        android:onClick="bGuardar"
+        android:text="@string/guardar"
+        app:layout_constraintStart_toStartOf="@+id/etContenidoNota"
+        app:layout_constraintTop_toBottomOf="@+id/etContenidoNota" />
+
+    <Button
+        android:id="@+id/bCancelar"
+        android:layout_width="150dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="60dp"
+        android:onClick="bCancelar"
+        android:text="@string/cancelar"
+        app:layout_constraintStart_toEndOf="@+id/bGuardar"
+        app:layout_constraintTop_toTopOf="@+id/bGuardar" />
+
+    <Button
+        android:id="@+id/bBorrar"
+        android:layout_width="150dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="60dp"
+        android:onClick="bBorrar"
+        android:text="@string/borrar"
+        app:layout_constraintStart_toEndOf="@+id/bGuardar"
+        app:layout_constraintTop_toTopOf="@+id/bGuardar" />
+
+</android.support.constraint.ConstraintLayout>
