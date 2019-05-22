@@ -8,9 +8,9 @@
 
     <TextView
         android:id="@+id/tvListaUser"
-        android:layout_width="170dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
         android:background="@color/colorFondos"
         android:gravity="center"
@@ -22,19 +22,22 @@
 
     <ListView
         android:id="@+id/lvUsuarios"
-        android:layout_width="169dp"
-        android:layout_height="362dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="220dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/fondo_lista_user"
-        app:layout_constraintEnd_toEndOf="@+id/tvListaUser"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvListaUser" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etGesNombreUser"
-        android:layout_width="195dp"
-        android:layout_height="39dp"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
         android:layout_marginTop="8dp"
         android:autofillHints=""
         android:background="@android:drawable/editbox_background"
@@ -50,7 +53,7 @@
 
     <EditText
         android:id="@+id/etGesPassUser"
-        android:layout_width="195dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="8dp"
         android:autofillHints=""
@@ -66,9 +69,11 @@
 
     <Button
         android:id="@+id/bBorrar"
-        android:layout_width="170dp"
+        android:layout_width="0dp"
         android:layout_height="45dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="15dp"
         android:background="@drawable/botonrojo"
         android:onClick="borrar"
         android:text="@string/borrar"
@@ -81,7 +86,7 @@
         android:id="@+id/bCancelar"
         android:layout_width="170dp"
         android:layout_height="45dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/botongris"
         android:onClick="cancelar"
         android:text="@string/cancelar"
@@ -94,7 +99,7 @@
         android:id="@+id/bModificar"
         android:layout_width="170dp"
         android:layout_height="45dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/botonazul"
         android:onClick="modificar"
         android:text="@string/modificar"
@@ -107,7 +112,7 @@
         android:id="@+id/bCerrarSesion"
         android:layout_width="167dp"
         android:layout_height="30dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="50dp"
         android:background="@drawable/botongris"
         android:onClick="cerrarSesion"
         android:text="@string/cerrarSesion"
@@ -117,9 +122,10 @@
 
     <TextView
         android:id="@+id/tvUserSelected"
-        android:layout_width="200dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/fondo_lista_user"
         android:gravity="center"
         android:textAlignment="center"
@@ -127,13 +133,12 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toEndOf="@+id/lvUsuarios"
         app:layout_constraintTop_toTopOf="@+id/lvUsuarios" />
 
     <TextView
         android:id="@+id/tvPassSelected"
-        android:layout_width="200dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/fondo_lista_user"

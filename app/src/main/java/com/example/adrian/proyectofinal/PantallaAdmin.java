@@ -179,7 +179,6 @@ public class PantallaAdmin extends AppCompatActivity {
 
     public void justDoIt(){
         //creamos los objetos necesarios
-
         ArrayUsuarios = new ArrayList<>();
 
         //obtenemos la consulta de todos los usuarios y los añadimos a text view

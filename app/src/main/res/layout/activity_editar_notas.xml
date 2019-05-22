@@ -26,14 +26,17 @@
     <EditText
         android:id="@+id/etContenidoNota"
         android:layout_width="0dp"
-        android:layout_height="400dp"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:autofillHints=""
         android:ems="10"
         android:gravity="start|top"
+        android:hint="@string/escribe_algo"
         android:inputType="textMultiLine"
         android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/bGuardar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etNombreNota"
@@ -43,31 +46,38 @@
     <Button
         android:id="@+id/bGuardar"
         android:layout_width="150dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/botonverde"
         android:onClick="bGuardar"
         android:text="@string/guardar"
-        app:layout_constraintStart_toStartOf="@+id/etContenidoNota"
-        app:layout_constraintTop_toBottomOf="@+id/etContenidoNota" />
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/etContenidoNota" />
 
     <Button
         android:id="@+id/bCancelar"
         android:layout_width="150dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="60dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/botonrojo"
         android:onClick="bCancelar"
-        android:text="@string/cancelar"
-        app:layout_constraintStart_toEndOf="@+id/bGuardar"
+        android:text="@string/bcancelarNota"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="@+id/etContenidoNota"
         app:layout_constraintTop_toTopOf="@+id/bGuardar" />
 
     <Button
         android:id="@+id/bBorrar"
         android:layout_width="150dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="60dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/botonrojo"
         android:onClick="bBorrar"
-        android:text="@string/borrar"
-        app:layout_constraintStart_toEndOf="@+id/bGuardar"
+        android:text="@string/bborrarNota"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="@+id/etContenidoNota"
         app:layout_constraintTop_toTopOf="@+id/bGuardar" />
 
 </android.support.constraint.ConstraintLayout>
