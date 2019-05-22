@@ -76,7 +76,31 @@ public class PantallaAdmin extends AppCompatActivity {
 
         justDoIt();
 
+        lvUsuarios.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long id) {
+                // TODO Auto-generated method stub
+                String itemSelected = lvUsuarios.getItemAtPosition(position).toString().split(" ")[1];
 
+                tvUserSelected.setVisibility(View.VISIBLE);
+                tvPassSelected.setVisibility(View.VISIBLE);
+                etGesNombreUser.setVisibility(View.VISIBLE);
+                etGesPassUser.setVisibility(View.VISIBLE);
+                bBorrar.setVisibility(View.VISIBLE);
+                bModificar.setVisibility(View.VISIBLE);
+                bCancelar.setVisibility(View.VISIBLE);
+
+                userSelected = selectBD(itemSelected).get(0);
+                passSelected = selectBD(itemSelected).get(1);
+
+                tvUserSelected.setText("Modificando el usuario \n➤ "+userSelected);
+                tvPassSelected.setText("Contraseña actual \n➤ "+passSelected);
+                etGesNombreUser.setText(userSelected);
+                etGesPassUser.setText(passSelected);
+
+            }
+        });
 
 
     }
