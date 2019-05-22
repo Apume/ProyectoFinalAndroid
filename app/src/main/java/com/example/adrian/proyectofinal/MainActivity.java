@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    //
+
     private Button bConfirmarRegistro, bCancelarRegistro, bRegistrar, bEntrar;
     private TextView tvRegistro, tvInicioSesion;
     private EditText etNombre, etPass;
